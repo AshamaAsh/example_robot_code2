@@ -14,6 +14,7 @@ Suite Setup         Run Keywords
 
 *** Test Cases ***
 Test to create sale order and verify created success
+    [Tags]         create_so
     WHEN Click New button
         AND Input customer account "0000000179"
         AND Input item number "205003_U000"
@@ -28,15 +29,23 @@ Test to create sale order and verify created success
 
 Test creating credit note
     [Tags]          run
+    Given Get so number from file
     When Click New button
         And Input customer account "0000000179"
-#        CDNG01
         And Click credit note
         And Input reason code "CDNG01"
-        And Select note format "Credit note (quantity)"
+        And Select "credit note (quantity)" in note format
         And Input sales order "${sales_order_id}"
         And Click wanted invoice
         And Click ok to create credit/debit note
+        And Click confirm sales order
+        And Click close printing confirmation
+        And Click Invoice Tab
+        And Click generate invoice
+
+
+
+
 
 
 

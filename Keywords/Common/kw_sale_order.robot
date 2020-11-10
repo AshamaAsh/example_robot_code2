@@ -168,26 +168,75 @@ Click latest sales order
 ###########credit note
 Click credit note
     wait until keyword succeeds     4x  5s      click element       css:button[id*="_Sell_button"][id*="SalesTable_"]
-    wait until keyword succeeds     4x  5s      click element       css:span[id*="SalesTable_"][id*="_SalesCreditNoteHeader_label"]
+    sleep   1s
+#    wait until keyword succeeds     4x  5s      click element       css:span[id*="SalesTable_"][id*="_SalesCreditNoteHeader_label"]
+    wait until keyword succeeds     4x  5s      click element       //button[@name="SalesCreditNoteHeader"]
+
 
 Input reason code "${reason_code}"
     wait until keyword succeeds     4x  5s      input text          css:input[name*="editReasonCode"]           ${reason_code}
+    press key                       css:input[name*="editReasonCode"]       \\13
 
-Select note format "${note_format}"
-    wait until keyword succeeds     4x  5s      click element       //input[@data-dyn-qtip-title="${note_format}"]
+Click note format
+    wait until keyword succeeds     4x  5s      click element       css:input[aria-controls*="SalesCopying"][aria-controls*="_NoteFormat_TH_list"]
+#    wait until keyword succeeds     4x  5s      click element       //input[@data-dyn-qtip-title="${note_format}"]
+
+Select "debit note (value)" in note format
+    Click note format
+    wait until keyword succeeds     4x  5s    click element       css:li[id*="SalesCopying_"][id*="_NoteFormat_TH_list_item1"]
+
+Select "debit note (quantity)" in note format
+    Click note format
+    wait until keyword succeeds     4x  5s    click element       css:li[id*="SalesCopying_"][id*="_NoteFormat_TH_list_item2"]
+
+Select "credit note (value)" in note format
+    Click note format
+    wait until keyword succeeds     4x  5s    click element       css:li[id*="SalesCopying_"][id*="_NoteFormat_TH_list_item3"]
+
+Select "credit note (quantity)" in note format
+    Click note format
+    wait until keyword succeeds     4x  5s    click element       css:li[id*="SalesCopying_"][id*="_NoteFormat_TH_list_item4"]
+
 
 Input sales order "${so_number}"
-    wait until keyword succeeds     4x  5s      input text          css:input[id*="__FilterField_CustInvoiceJour_SalesNum_SalesId_Input_"]      ${so_number}
+    wait until keyword succeeds     4x  5s      click element                css:div[id*="SalesCopying_"][id*="_CustInvoiceJour_SalesNum_1"]
+    wait until keyword succeeds     4x  5s      click element                css:div[id*="SalesCopying_"][id*="_CustInvoiceJour_SalesNum_1"]
+    wait until keyword succeeds     4x  5s      input text                   css:input[id*="__FilterField_CustInvoiceJour_SalesNum_SalesId_Input_"]      ${so_number}
     press key       css:input[id*="__FilterField_CustInvoiceJour_SalesNum_SalesId_Input_"]          \\13
 
 Click wanted invoice
     wait until keyword succeeds     4x  5s      click element       css:span[id*="SalesCopying_"][id*="_InvoiceMarkAll_check"]
 
 Click ok to create credit/debit note
-    wait until keyword succeeds     4x  5s      click element       css:span[id*="SalesCopying_"][id*="_OK_label"]
+    wait until keyword succeeds     4x  5s      Click_by_javascript       //span[@class="button-label"][text()="OK"]
+    sleep   2s
+    Verify go back to so page
 
+Verify go back to so page
+    page should not contain element    //div[@role="heading"][text()="Create credit note"]
 
+Click confirm sales order
+    wait until keyword succeeds     4x  5s      click element       //span[@class="button-label"][text()="Confirm sales order"]
+    Click ok to confirm sales order
+    Click yes for cofirming only posting and printing
 
+Click yes for cofirming only posting and printing
+    wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="Yes"]
 
+Click ok to confirm sales order
+    wait until keyword succeeds     4x  5s      click element       css:button[id*="SalesEditLines_"][id*="_OK"]
+
+Click close printing confirmation
+    wait until keyword succeeds     4x  5s      click element       css:span[id*="salestablelistpage_"][id*="_SystemDefinedCloseButton_label"]
+
+Click sales order header
+    wait until keyword succeeds     4x  5s      click element       css:button[id*="SalesTable_"][id*="_SalesOrder_button"]
+
+Approve sales order
+    wait until keyword succeeds     4x  5s      click element           css:span[id*="SalesTable_"][id*="_IVZS_CNApprovalApproveButton_label"]
+    wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="OK"]
+
+Warning message popup
+    ${msg}=         get text        //span[@id="titleField"]
 
 

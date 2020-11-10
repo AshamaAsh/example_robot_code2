@@ -37,6 +37,12 @@ def clickByJavascript(locator):
  obj = driver.find_element_by_xpath(locator)
  driver.execute_script('arguments[0].click()', obj)
 
+@keyword('Click_css_by_javascript')
+def clickCssByJavascript(locator):
+ driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ obj = driver.find_element_by_css_selector("locator")
+ driver.execute_script('arguments[0].click()', obj)
+
 @keyword('change_format_date')
 def changeFormatDate(variables):
  var = variables.split('/')
