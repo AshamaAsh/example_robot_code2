@@ -1,0 +1,135 @@
+pipeline {
+    agent { label 'drs-dc2-robot-1||drs-dc2-robot-2' }
+    //environment {
+    //    NOTIFY_CHANNEL = 'ivp-robot'
+    //    NOTIFY_CRED_ID = 'drs-ci-user-slack'
+    //    NOTIFY_URL = 'https://ivp-isp-ope.slack.com/services/hooks/jenkins-ci/'
+    //}
+    options {
+        ansiColor('xterm')
+    }
+    stages {
+        stage('Get All Robot Files') {
+            steps {
+                // clean work-space
+                cleanWs()
+                // pull code
+                script {
+                    try {
+                        git branch: 'dev', credentialsId: 'drs-ci-user-git', url: 'https://git.alm.set/drs/etfs/etfs-robot.git'
+                    } catch (error) {
+                        retry(2) {
+                            sleep time: 30, unit: 'MINUTES'
+                            git branch: 'dev', credentialsId: 'drs-ci-user-git', url: 'https://git.alm.set/drs/etfs/etfs-robot.git'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Run All Jobs (abort when not exist)') {
+            steps {
+                script {
+                    def testsuiteFileNameList = []
+                    def jobDirName = 'drs-etfs-dev-run-robot-files'
+                    // Get all filename
+                    // def filenames = findFiles(glob: '**/*.robot')
+                    def filenames = [
+                                     'create_IC_AM.robot','create_upload_incash_AM.robot',
+                                     'create_IC_PD.robot','create_upload_incash_PD.robot',
+                                     'create_IK_combined_fully.robot','create_IK_combined_notFully.robot','create_upload_IK_combined.robot',
+                                     'create_IK_nonTSD_fully.robot','create_upload_IK_nonTSD.robot',
+                                     'create_IK_TSD_fully.robot','create_IK_TSD_notFully.robot','create_upload_IK_TSD.robot',
+                                     'redeem_IC_AM.robot','redeem_upload_incash_AM.robot',
+                                     'redeem_IC_PD.robot','redeem_upload_incash_PD.robot',
+                                     'redeem_IK_combined_decrease.robot','redeem_IK_combined_fully.robot','redeem_upload_IK_combined.robot',
+                                     'redeem_IK_nonTSD_fully.robot','redeem_upload_IK_nonTSD.robot',
+                                     'redeem_IK_TSD_decrease.robot','redeem_IK_TSD_fully.robot','redeem_upload_IK_TSD.robot',
+                                     'initiate.robot',
+                                     'unit_holder_create.robot','unit_holder_adjust.robot',
+                                     'transfer_etf_account_AM.robot','transfer_etf_account_PD.robot',
+                                     'edit_creation_IC_AM.robot'
+                                      ]
+                    for (int i =0; i< filenames.size(); i++){
+                        def filename = filenames[i].toString()
+                        // filename = filename.split('/')[-1]
+                        // Filter choose only testsuite
+                        if (!filename.contains('kw') && !filename.contains('var')) {
+                            testsuiteFileNameList.add(filename)
+                        }
+                    }
+                    // Sorting
+                    // testsuiteFileNameList.sort()
+
+                    for (int i = 0; i < testsuiteFileNameList.size(); i++) {
+                        testsuiteFileName = testsuiteFileNameList[i]
+                        def jobName = jobDirName + '/' + testsuiteFileName.take(testsuiteFileName.lastIndexOf('.'))
+                        //println "${jobName}"
+                        try {
+                          build job:"${jobName}"
+                        } catch (error) {
+                            println "abort: ${jobName}"
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post {
+        success {
+            notifySuccess()
+        }
+        failure {
+            notifyFailed()
+        }
+    }
+}
+
+def notifyFailed() {
+    def msg = changeLogs()
+    //slackSend (
+    //    channel: "${NOTIFY_CHANNEL}",
+    //    baseUrl: "${NOTIFY_URL}",
+    //    tokenCredentialId: "${NOTIFY_CRED_ID}",
+    //    color: '#ff0000',
+    //    message: "FAILED: Job '${env.JOB_NAME} #${env.BUILD_NUMBER}' (${env.BUILD_URL})\n ```${msg}```"
+    //)
+
+    emailext(
+        subject: "FAILED: Job '${env.JOB_NAME} #${env.BUILD_NUMBER}'",
+        body: "FAILED: Job '${env.JOB_NAME} #${env.BUILD_NUMBER}' \nCheck output at (${env.BUILD_URL}) \n ```${msg}```",
+        to: "anuchit@playtorium.co.th",
+        from: "anuchit@playtorium.co.th"
+    )
+}
+
+def notifySuccess() {
+    def msg = changeLogs()
+    //slackSend (
+    //    channel: "${NOTIFY_CHANNEL}",
+    //    baseUrl: "${NOTIFY_URL}",
+    //    tokenCredentialId: "${NOTIFY_CRED_ID}",
+    //    color: '#009900',
+    //    message: "SUCCESSFUL: Job '${env.JOB_NAME} #${env.BUILD_NUMBER}' (${env.BUILD_URL}) \n ```${msg}```"
+    //)
+
+    emailext(
+        subject: "SUCCESSFUL: Job '${env.JOB_NAME} #${env.BUILD_NUMBER}'",
+        body: "SUCCESSFUL: Job '${env.JOB_NAME} #${env.BUILD_NUMBER}' \nCheck output at (${env.BUILD_URL}) \n ```${msg}```",
+        to: "anuchit@playtorium.co.th",
+        from: "anuchit@playtorium.co.th"
+    )
+}
+
+@NonCPS
+def changeLogs() {
+    def msg = "Changes:"
+    def changeLogSets = currentBuild.changeSets
+    for (int i = 0; i < changeLogSets.size(); i++) {
+        def entries = changeLogSets[i].items
+        for (int j = 0; j < entries.length; j++) {
+            def entry = entries[j]
+            msg +=  "\n\t- ${entry.msg} [${entry.author}]"
+        }
+    }
+    return msg
+}

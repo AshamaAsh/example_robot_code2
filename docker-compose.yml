@@ -1,0 +1,45 @@
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-radium
+    container_name: selenium-hub
+    volumes:
+      - selenium-hub-downloads:/tmp/downloads
+    ports:
+      - "4444:4444"
+  chrome01:
+    image: selenium/node-chrome:3.141.59-radium
+    container_name: chrome01
+    volumes:
+      - /dev/shm:/dev/shm
+      - selenium-hub-downloads:/home/seluser/Downloads
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - HTTP_PROXY=http://pxs.set:80
+      - HTTPS_PROXY=http://pxs.set:80
+
+  chrome02:
+    image: selenium/node-chrome:3.141.59-radium
+    container_name: chrome02
+    volumes:
+      - /dev/shm:/dev/shm
+      - selenium-hub-downloads:/home/seluser/Downloads
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - HTTP_PROXY=http://pxs.set:80
+      - HTTPS_PROXY=http://pxs.set:80
+
+
+networks:
+  default:
+    external:
+      name: selenium-hub-network
+volumes:
+  selenium-hub-downloads:
+    external: true
