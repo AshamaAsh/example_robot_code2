@@ -104,7 +104,7 @@ Input project (sales order) "${project}"
 Click save sales order
     wait until keyword succeeds     4x  5s      click element   css:span[id*="SalesTable_"][id*="SystemDefinedSaveButton_label"]
     Get sale order number (incase of CN and DN)
-    Get sales order id for creating a debit/credit note
+    Get sale order id for creating a debit/credit note
 
 Get sale order number (incase of CN and DN)
     Click header
@@ -114,7 +114,7 @@ Get sale order number (incase of CN and DN)
     set suite variable      ${sales_order_id}
 Click header
     wait until keyword succeeds     4x  5s      click element       //label[@class="label radioButton-label staticText"][text()="Header"]
-Get sales order id for creating a debit/credit note
+Get sale order id for creating a debit/credit note
     Dump so number into file
     Get so number from file
 #    log to console                  ${sales_order_id}
@@ -125,12 +125,14 @@ Get so number from file
     set global variable            ${sales_order_id}
 
 ###################
-
 Click Invoice Tab
-    wait until keyword succeeds     4x  5s      click element   css:span[id*="SalesTable_"][id*="Invoice_button"]
+    sleep   1s
+    wait until keyword succeeds     4x  5s      click element   css:button[id*="SalesTable_"][id*="_Invoice_button"]
 
 Click generate invoice
-    wait until keyword succeeds     4x  5s      click element   css:button[name="buttonUpdateInvoice"]
+#    wait until keyword succeeds     4x  5s      click element   css:button[name="buttonUpdateInvoice"]
+#    wait until keyword succeeds     4x  5s      click element   css:span[id*="SalesTable_"][id*="_buttonUpdateInvoice_label"]
+    wait until keyword succeeds     4x  5s      Click_by_javascript    //button[@name="buttonUpdateInvoice"]
 
 Click no to apply recommended value popup
     Wait Until Element Contains
@@ -160,6 +162,31 @@ Sale status should be "${sale_status}"
     ...     Element Attribute Value Should Be
     ...     css:input[name="SalesStatus"]       title       ${sale_status}
 
+Click invoice journals
+    sleep   1s
+    Wait Until Page Contains Element        css:span[id*="SalesTable_"][id*="_buttonJournalInvoice_label"]
+    click element                           css:span[id*="SalesTable_"][id*="_buttonJournalInvoice_label"]
+#    ${invoice}=         get value           css:input[id*="CustInvoiceJournal_"][id*="_CustInvoiceJour_InvoiceNum_Grid_input"]
+#    log to console      ${invoice}
+    wait until keyword succeeds     4x  5s      click element           css:input[id*="CustInvoiceJournal_"][id*="_CustInvoiceJour_InvoiceNum_Grid_input"]
+#    wait until keyword succeeds     4x  5s      Click_by_javascript     //input[@name="CustInvoiceJour_InvoiceNum_Grid"]
+#    wait until keyword succeeds     4x  5s      Click_by_javascript     //input[@aria-label="Invoice"]
+
+
+Get invoice number
+    sleep   1s
+    ${invoice_number}=      get value       //input[@name="CustInvoiceJour_InvoiceNum"]
+#    ${invoice_number}=      get value       css:input[id*="CustInvoiceJournal_"][id*="_CustInvoiceJour_InvoiceNum_input"]
+    set suite variable      ${invoice_number}
+    Dump invoice number into file
+    Get invoice number from file
+
+Dump invoice number into file
+    Dump_Variable_To_File           ${invoice_number}       invoice_number.txt
+Get invoice number from file
+    ${invoice_number}=              Load_Variable_From_File         invoice_number.txt
+    set suite variable              ${invoice_number}
+
 ###########
 Click latest sales order
     Get so number from file
@@ -171,7 +198,6 @@ Click credit note
     sleep   1s
 #    wait until keyword succeeds     4x  5s      click element       css:span[id*="SalesTable_"][id*="_SalesCreditNoteHeader_label"]
     wait until keyword succeeds     4x  5s      click element       //button[@name="SalesCreditNoteHeader"]
-
 
 Input reason code "${reason_code}"
     wait until keyword succeeds     4x  5s      input text          css:input[name*="editReasonCode"]           ${reason_code}
@@ -213,7 +239,7 @@ Click ok to create credit/debit note
     Verify go back to so page
 
 Verify go back to so page
-    page should not contain element    //div[@role="heading"][text()="Create credit note"]
+    wait until keyword succeeds     4x  5s      page should not contain element    //div[@role="heading"][text()="Create credit note"]
 
 Click confirm sales order
     wait until keyword succeeds     4x  5s      click element       //span[@class="button-label"][text()="Confirm sales order"]
@@ -227,7 +253,8 @@ Click ok to confirm sales order
     wait until keyword succeeds     4x  5s      click element       css:button[id*="SalesEditLines_"][id*="_OK"]
 
 Click close printing confirmation
-    wait until keyword succeeds     4x  5s      click element       css:span[id*="salestablelistpage_"][id*="_SystemDefinedCloseButton_label"]
+#    wait until keyword succeeds     4x  5s      click element       css:span[id*="salestablelistpage_"][id*="_SystemDefinedCloseButton_label"]
+    wait until keyword succeeds     4x  5s      click element       css:button[id*="SrsReportPdfViewerForm_"][id*="_SystemDefinedCloseButton"]
 
 Click sales order header
     wait until keyword succeeds     4x  5s      click element       css:button[id*="SalesTable_"][id*="_SalesOrder_button"]
@@ -236,7 +263,44 @@ Approve sales order
     wait until keyword succeeds     4x  5s      click element           css:span[id*="SalesTable_"][id*="_IVZS_CNApprovalApproveButton_label"]
     wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="OK"]
 
-Warning message popup
+Warning message "${message}" popup
+    wait until element is visible   //span[@id="titleField"]
     ${msg}=         get text        //span[@id="titleField"]
+    Element text should be          //span[@id="titleField"]        ${message}
 
+Click 'No' for applying recommended value
+    wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="No"]
 
+Click 'Yes' for wanting to continue
+    wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="Yes"]
+
+Click ok for posting invoice
+    sleep   1s
+    wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="OK"]
+
+Click sales order number "${so_number}"
+    wait until keyword succeeds     4x  5s      click element       css:input[title*="${so_number}"]
+
+#########################
+Click edit sales order
+    wait until keyword succeeds     4x  5s      Click_by_javascript     //span[@class="button-label"][text()="Edit"]
+
+Input number sequence group "${number_seq}"
+    Click header
+#    input[id*="SalesTable_"][id*="_Posting_NumberSequenceGroup_input"]
+    wait until keyword succeeds     4x  5s      input text         //input[@name="Posting_NumberSequenceGroup"]     ${number_seq}
+
+Input RV number "${rv_number}"
+    wait until keyword succeeds     4x  5s      input text         //input[@name="SalesTable_IVZS_RVNumber"]        ${rv_number}
+#########################
+Verify generate invoice credit note
+    sleep   2s
+    wait until keyword succeeds     4x  5s      Click_css_by_javascript     css:button[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton"]
+    sleep   1s
+    Page Should Contain Element         //label[@class="label radioButton-label staticText"][text()="Header"]
+
+Click close invoice
+#    wait until keyword succeeds     4x  5s      click element     css:span[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton_label"]
+#    wait until keyword succeeds     4x  5s      click element     css:span[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton_label"]
+    wait until keyword succeeds     4x  5s      click element     css:button[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton"]
+    wait until keyword succeeds     4x  5s      click element     css:button[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton"]

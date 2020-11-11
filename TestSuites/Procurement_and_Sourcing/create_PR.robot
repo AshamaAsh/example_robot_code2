@@ -46,7 +46,7 @@ Create New PR 1 line not by amount
 Create New PR more than 1 line not by amount
     [Tags]      run_test
     When Click new for new PR
-        And Input PR subject "Test ค่าอาหารสำหรับการจัดเลี้ยง"
+        And Input PR subject "Test ดำเนินการเอง 4 lines"
         And Input PR type "ดำเนินการเอง"
         And Start date "11/11/2020" and end date "11/11/2020"
         And Click OK to create PR
@@ -54,16 +54,16 @@ Create New PR more than 1 line not by amount
         And Click add line
 #        And Input reqester "Phornpan Nooma"
         And Input buying legal entity "ASET"
-        And Input item number "90101500-0000000003"
+        And Input item number "84121600-0000000007"
         And Input quantity "1"
-        And Input unit price "20000"
+        And Input unit price "1000"
         And Click financial dimension
-        And Input cost center for financial dimension "1030000"
-        And Input project for financial dimension "BAU"
+        And Input cost center for financial dimension "1900000"
+        And Input project for financial dimension "BAU_FIN"
         And Input security type for financial dimension "Z000001"
-        And Input product for financial dimension "900001"
-#        And Input system IT for financial dimension "UNASSIGN"
-#        And Input affiliate for financial dimension "SET"
+        And Input product for financial dimension "500100"
+        And Input system IT for financial dimension "UNASSIGN"
+        And Input affiliate for financial dimension "SET"
         And Click save
         And Click change vendor
         And Input vendor name "คุณหิรัญ รดีศรี"
@@ -71,56 +71,55 @@ Create New PR more than 1 line not by amount
         And Click add line
 #        And Input reqester "Phornpan Nooma"
         And Input buying legal entity "ASET"
-        And Input item number "90101500-0000000003"
+        And Input item number "84121600-0000000007"
         And Input quantity "1"
-        And Input unit price "2000"
+        And Input unit price "300"
         And Click financial dimension
-        And Input cost center for financial dimension "1030000"
-        And Input project for financial dimension "BAU"
+        And Input cost center for financial dimension "1900000"
+        And Input project for financial dimension "BAU_FIN"
         And Input security type for financial dimension "Z000001"
-        And Input product for financial dimension "900001"
-#        And Input system IT for financial dimension "UNASSIGN"
-#        And Input affiliate for financial dimension "SET"
+        And Input product for financial dimension "500100"
+        And Input system IT for financial dimension "UNASSIGN"
+        And Input affiliate for financial dimension "SET"
         And Click save
         And Click change vendor
         And Input vendor name "คุณหิรัญ รดีศรี"
 #        And Verify vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์"
 
         And Click add line
-        And Input reqester "Phornpan Nooma"
-#        Phornpan Nooma
-        And Input buying legal entity "ASET"
-        And Input item number "90101500-0000000003"
+#        And Input reqester "Phornpan Nooma"
+#        And Input buying legal entity "ASET"
+        And Input item number "84121600-0000000007"
         And Input quantity "1"
-        And Input unit price "20000"
+        And Input unit price "1200"
         And Click financial dimension
-        And Input cost center for financial dimension "1030000"
-        And Input project for financial dimension "BAU"
+        And Input cost center for financial dimension "1900000"
+        And Input project for financial dimension "BAU_FIN"
         And Input security type for financial dimension "Z000001"
-        And Input product for financial dimension "900001"
-#        And Input system IT for financial dimension "UNASSIGN"
-#        And Input affiliate for financial dimension "SET"
+        And Input product for financial dimension "500100"
+        And Input system IT for financial dimension "UNASSIGN"
+        And Input affiliate for financial dimension "SET"
         And Click save
         And Click change vendor
-        And Input vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์"
+        And Input vendor name "Openitem Dummy NameOpenitem Dummy Name"
 #        And Verify vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์์"
 
         And Click add line
 #        And Input reqester "Phornpan Nooma"
-        And Input buying legal entity "ASET"
-        And Input item number "90101500-0000000003"
+#        And Input buying legal entity "ASET"
+        And Input item number "84121600-0000000007"
         And Input quantity "1"
-        And Input unit price "2000"
+        And Input unit price "1100"
         And Click financial dimension
-        And Input cost center for financial dimension "1030000"
-        And Input project for financial dimension "BAU"
+        And Input cost center for financial dimension "1900000"
+        And Input project for financial dimension "BAU_FIN"
         And Input security type for financial dimension "Z000001"
-        And Input product for financial dimension "900001"
-#        And Input system IT for financial dimension "UNASSIGN"
-#        And Input affiliate for financial dimension "SET"
+        And Input product for financial dimension "500100"
+        And Input system IT for financial dimension "UNASSIGN"
+        And Input affiliate for financial dimension "SET"
         And Click save
         And Click change vendor
-        And Input vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์"
+        And Input vendor name "Openitem Dummy NameOpenitem Dummy Name"
 #        And Verify vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์"
 
         And Submit PR and sending to approval process
