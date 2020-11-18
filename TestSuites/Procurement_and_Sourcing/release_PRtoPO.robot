@@ -13,6 +13,6 @@ Suite Setup         Run Keywords
 
 *** Test Cases ***
 Test release approved pr page
-    Input pr id "PR20001065"
+    Input pr id "PR20001156"
     Convert PR to PO
     Verify created PO
