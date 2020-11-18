@@ -24,7 +24,7 @@ Test create new purchase order
     Click create PO
     Input vendor account "Z999999999" [PO]
     Input start date for PO "18/11/2020"
-    Input end date for PO "18/11/2020"
+    Input end date for PO "17/11/2021"
     Click ok to create PO
     Click edit to edit PO
     Input pr type of po "จัดหาผ่านหน่วยงานจัดหา"
