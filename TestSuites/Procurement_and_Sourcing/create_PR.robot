@@ -221,7 +221,7 @@ Test fix asset
         And Click add line
 #        And Input reqester "Chollada Amatyakul"
         And Input buying legal entity "ASET"
-        And Input item number "70111703-0000000001"
+        And Input item number "43231500-0000000002"
         And Input quantity "1"
         And Input unit price "1500"
         And Click financial dimension
@@ -231,6 +231,41 @@ Test fix asset
         And Input product for financial dimension "900001"
         And Input system IT for financial dimension "UNASSIGN"
         And Input affiliate for financial dimension "TSD"
+
+        And Click save
+        And Click change vendor
+        And Input vendor name "Z999999999"
+
+        And Submit PR and sending to approval process
+        And Click close window to verrify created PR
+        And Click refresh button
+    Then Verify created PR
+
+
+
+#70111703-0000000001
+Test fix asset
+    [Tags]      fa_prepaid
+    When Click new for new PR
+        And Input PR subject "test fix asset prepaid 1"
+        And Input PR type "จัดหาผ่านหน่วยงานจัดหา"
+        And Start date "18/11/2020" and end date "17/11/2021"
+#        And Click by amount
+        And Click OK to create PR
+
+        And Click add line
+#        And Input reqester "Chollada Amatyakul"
+        And Input buying legal entity "ASET"
+        And Input item number "70111703-0000000001"
+        And Input quantity "1"
+        And Input unit price "1500"
+        And Click financial dimension
+        And Input cost center for financial dimension "1123020"
+        And Input project for financial dimension "BAU_BLDG"
+#        And Input security type for financial dimension "Z000001"
+#        And Input product for financial dimension "900001"
+#        And Input system IT for financial dimension "UNASSIGN"
+#        And Input affiliate for financial dimension "TSD"
 
         And Click save
         And Click change vendor
