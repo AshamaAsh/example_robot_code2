@@ -27,11 +27,13 @@ Test create new purchase order
     Input end date for PO "18/11/2020"
     Click ok to create PO
     Click edit to edit PO
-    Input item of po "70111703-0000000001"
+    Input pr type of po "จัดหาผ่านหน่วยงานจัดหา"
+    Input item for po "70111703-0000000001"
     Input unit price for po "1500"
     Input received condition "Not involved in inspection committee (ไม่เข้าคณะทำงานตรวจรับ)"
     Click financial dimension of po
     Input cost center for po "1123020"
     Input project for po "BAU_BLDG"
-    Click save
-    Click submit PR for approving
+    Click save for PO
+    Click workflow for po
+    Click submit PO

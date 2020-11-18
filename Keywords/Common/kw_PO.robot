@@ -58,15 +58,19 @@ Click edit to edit PO
     sleep   1s
     Click_by_javascript     //span[@class="button-label"][text()="Edit"]
 
-Input item of po "${item}"
-    wait until keyword succeeds     4x    5s        input text      css:input[id*="purchtablelistpage_"][id*="PurchTable_IVZS_BusinessJustification_Description_input"]         ${item}
+Input pr type of po "${pr_type}"
+    wait until keyword succeeds     4x    5s        input text      css:input[id*="purchtablelistpage_"][id*="PurchTable_IVZS_BusinessJustification_Description_input"]         ${pr_type}
+
+Input item for po "${item}"
+    wait until keyword succeeds     4x    5s        input text      css:input[id*="purchtablelistpage_"][id*="_PurchLine_ItemId_input"]         ${item}
 
 Input unit price for po "${unit_price}"
     wait until keyword succeeds     4x  5s      clear element text          css:input[id*="purchtablelistpage_"][id*="_PurchLine_PurchPriceGrid_input"]
     wait until keyword succeeds     4x  5s      input text                  css:input[id*="purchtablelistpage_"][id*="_PurchLine_PurchPriceGrid_input"]         ${unit_price}
 
 Input received condition "${condition}"
-    wait until keyword succeeds     4x  5s      input text      css:input[id*="purchtablelistpage_"][id*="_PurchLine_IVZS_ReceivedCondition_input"]         ${condition}
+    wait until keyword succeeds     4x  5s      click element   //*[@id="purchtablelistpage_7_PurchLine_IVZS_ReceivedCondition"]/div/div[2]/div
+    wait until keyword succeeds     4x  5s      click element      //li[text()="${condition}"]
     sleep   2s
 
 Click financial dimension of po
@@ -78,3 +82,18 @@ Input cost center for po "${cost_center}"
 
 Input project for po "${project}"
     wait until keyword succeeds     4x  5s      input text      css:input[id*="purchtablelistpage_"][id*="_DECValue_FD02_Project_input"]            ${project}
+    press key               css:input[id*="purchtablelistpage_"][id*="_DECValue_FD02_Project_input"]        \\13
+
+Click save for PO
+    Click_by_javascript         //span[text()="Save"]
+
+Click workflow for po
+    wait until keyword succeeds     4x  5s      click element   //button[@data-dyn-controlname="PurchTableWorkflowDropDialog"]
+
+Click submit PO
+    wait until element is visible       //button[@data-dyn-controlname="PromotedAction1"]
+    click element                       //button[@data-dyn-controlname="PromotedAction1"]
+#    wait until keyword succeeds     4x  5s      click element   //button[@data-dyn-controlname="PromotedAction1"]
+
+Click submit again
+    wait until keyword succeeds     4x  5s      click element   //span[@class="button-label"][text()="Submit"]
