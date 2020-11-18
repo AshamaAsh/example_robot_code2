@@ -5,6 +5,12 @@ Go to release approved purchase requisition
     wait until keyword succeeds     4x  5s      click element       css:a[data-dyn-title*="Procurement"][data-dyn-title*="sourcing"]
     wait until keyword succeeds     4x  5s      click element       css:a[data-dyn-title="Release approved purchase requisitions"]
 
+#//a[@data-dyn-title="All purchase orders"]
+Go to all purchase order
+    Go to module
+    wait until keyword succeeds     4x  5s      click element       css:a[data-dyn-title*="Procurement"][data-dyn-title*="sourcing"]
+    wait until keyword succeeds     4x  5s      click element       css:a[data-dyn-title="All purchase orders"]
+
 Input pr id "${pr_id}"
     sleep   3s
     click element       //div[@class="columnHeader-label alignmentAuto"][text()="Purchase requisition"]

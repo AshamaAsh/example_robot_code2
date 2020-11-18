@@ -8,7 +8,7 @@ Suite Setup         Run Keywords
 ...                 Go to web
 ...                 Input username "bhakjira@playtorium.co.th"
 ...                 Input password "passwordD365"
-...                 Go to release approved purchase requisition
+...                 Go to all purchase order
 #Suite Teardown      Close All Browsers
 
 *** Test Cases ***
@@ -18,6 +18,7 @@ Test release approved pr page
     Verify created PO
 
 Test create new purchase order
+    [Tags]          po
     Click create PO
     Input vendor account "Z999999999" [PO]
     Input start date for PO "18/11/2020"
