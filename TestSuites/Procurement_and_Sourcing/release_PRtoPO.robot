@@ -8,7 +8,9 @@ Suite Setup         Run Keywords
 ...                 Go to web
 ...                 Input username "bhakjira@playtorium.co.th"
 ...                 Input password "passwordD365"
+...                 Change company to "ASET"
 ...                 Go to all purchase order
+
 #Suite Teardown      Close All Browsers
 
 *** Test Cases ***

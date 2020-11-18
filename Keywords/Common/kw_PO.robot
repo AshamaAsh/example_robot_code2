@@ -1,4 +1,15 @@
 *** Keywords ***
+Change company to "${company}"
+    Wait Until Page Contains Element        id:CompanyButton
+    Click Element                           id:CompanyButton
+    Wait Until Page Contains Element        //input[@name="DataArea_id"]
+    Click Element                           //input[@name="DataArea_id"]
+    Clear Element Text                      //input[@name="DataArea_id"]
+    Input Text                              //input[@name="DataArea_id"]               ${company}
+    Press key                              //input[@name="DataArea_id"]                \\13
+    wait until keyword succeeds     4x  5s      click element       css:span[id*="Close_label"]
+    sleep   2s
+
 #//div[@class="columnHeader-label alignmentAuto"][text()="Purchase requisition"]
 Go to release approved purchase requisition
     Go to module
