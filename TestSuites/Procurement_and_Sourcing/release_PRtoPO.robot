@@ -23,17 +23,20 @@ Test create new purchase order
     [Tags]          po
     Click create PO
     Input vendor account "Z999999999" [PO]
-    Input start date for PO "18/11/2020"
-    Input end date for PO "17/11/2021"
+    Input start date for PO "19/11/2020"
+    Input end date for PO "19/11/2020"
     Click ok to create PO
+    sleep   2s
     Click edit to edit PO
     Input pr type of po "จัดหาผ่านหน่วยงานจัดหา"
-    Input item for po "70111703-0000000001"
-    Input unit price for po "1500"
+#    43231500-0000000002
+    Input item for po "43231500-0000000002"
+    Input unit price for po "1200"
     Input received condition "Not involved in inspection committee (ไม่เข้าคณะทำงานตรวจรับ)"
     Click financial dimension of po
-    Input cost center for po "1123020"
-    Input project for po "BAU_BLDG"
+    Input cost center for po "1080020"
+    Input project for po "BAU_FIN"
     Click save for PO
     Click workflow for po
     Click submit PO
+
