@@ -6,9 +6,10 @@ Change company to "${company}"
     Click Element                           //input[@name="DataArea_id"]
     Clear Element Text                      //input[@name="DataArea_id"]
     Input Text                              //input[@name="DataArea_id"]               ${company}
-    Press key                              //input[@name="DataArea_id"]                \\13
-    wait until keyword succeeds     4x  5s      click element       css:span[id*="Close_label"]
+    Press keys                               //input[@name="DataArea_id"]              RETURN
+    wait until keyword succeeds         4x  5s              click element       css:span[id*="Close_label"]
     sleep   2s
+    Wait Until Keyword Succeeds         4x  5s              click button        //button[@data-dyn-controlname="Close"]
 
 #//div[@class="columnHeader-label alignmentAuto"][text()="Purchase requisition"]
 Go to release approved purchase requisition

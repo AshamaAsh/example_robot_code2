@@ -8,6 +8,7 @@ Suite Setup         Run Keywords
 ...                 Go to web
 ...                 Input username "bhakjira@playtorium.co.th"
 ...                 Input password "passwordD365"
+...                 Login success and show home page correctly
 ...                 Change company to "ASET"
 ...                 Go to all purchase order
 

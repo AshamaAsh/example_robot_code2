@@ -20,6 +20,10 @@ Click signin
     click element           xpath://input[@id="idSIButton9"]
 #####################
 
+Login success and show home page correctly
+    Wait Until Element Is Visible           //img[@src="resources/images/defaultCompanyBanner.jpg"]
+#    Title Should Be                         Finance and Operations
+
 Select Company "${company}"
     click element       xpath://button[@id="CompanyButton"]
     wait until keyword succeeds     4x  5s      input text          //input[@id="SysCompanyChooser_4_DataArea_id_input"]       ${company}
