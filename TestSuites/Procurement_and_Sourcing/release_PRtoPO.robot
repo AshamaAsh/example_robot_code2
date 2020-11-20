@@ -27,8 +27,7 @@ Test create new purchase order
     Input start date for PO "19/11/2020"
     Input end date for PO "19/11/2020"
     Click ok to create PO
-    sleep   2s
-    Click edit to edit PO
+#    Click edit to edit PO
     Input pr type of po "จัดหาผ่านหน่วยงานจัดหา"
 #    43231500-0000000002
     Input item for po "43231500-0000000002"

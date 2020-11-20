@@ -14,7 +14,7 @@ import datetime
 #try
 @keyword('Set_value_by_javascript')
 def setValueByJavascript(locator,value):
- driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ driver = BuiltIn().get_library_instance('SeleniumLibrary').driver
  obj = driver.find_element_by_id(locator)
 
  #SET  VALUE
@@ -23,7 +23,7 @@ def setValueByJavascript(locator,value):
 
 @keyword('Get_value_by_javascript')
 def getValueByJavascript(locator):
- driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ driver = BuiltIn().get_library_instance('SeleniumLibrary').driver
  obj = driver.find_element_by_css_selector("locator")
 
  #GET RETURN VALUE
@@ -33,13 +33,13 @@ def getValueByJavascript(locator):
 
 @keyword('Click_by_javascript')
 def clickByJavascript(locator):
- driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ driver = BuiltIn().get_library_instance('SeleniumLibrary').driver
  obj = driver.find_element_by_xpath(locator)
  driver.execute_script('arguments[0].click()', obj)
 
 @keyword('Click_css_by_javascript')
 def clickCssByJavascript(locator):
- driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ driver = BuiltIn().get_library_instance('SeleniumLibrary').driver
  obj = driver.find_element_by_css_selector("locator")
  driver.execute_script('arguments[0].click()', obj)
 
@@ -81,7 +81,7 @@ def calETFVolume(cu,cuShQty):
 
 @keyword('Clear_text')
 def clearTextBySelenium(locator) :
- driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ driver = BuiltIn().get_library_instance('SeleniumLibrary').driver
  #ADD Implicit wait
  driver.implicitly_wait(10)
  obj = driver.find_element_by_id(locator)
@@ -89,7 +89,7 @@ def clearTextBySelenium(locator) :
 
 @keyword('click_basket_type')
 def clickBasketType(locator) :
- driver = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
+ driver = BuiltIn().get_library_instance('SeleniumLibrary').driver
  #ADD Implicit wait
  driver.implicitly_wait(10)
  obj = driver.find_element_by_id(locator)
