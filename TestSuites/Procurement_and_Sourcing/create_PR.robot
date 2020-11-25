@@ -215,26 +215,43 @@ Test fix asset
         And Input PR subject "test fix asset 11"
         And Input PR type "จัดหาผ่านหน่วยงานจัดหา"
         And Start date "18/1/2021" and end date "18/12/2021"
-#        And Click by amount
+        And Click by amount
         And Click OK to create PR
 
         And Click add line
 #        And Input reqester "Chollada Amatyakul"
         And Input buying legal entity "ASET"
-        And Input item number "43231500-0000000002"
-        And Input quantity "1"
-        And Input unit price "1500"
+        And Input item number "72151500-0000000003"
+        And Input quantity "650"
+        And Input unit price "1"
         And Click financial dimension
-        And Input cost center for financial dimension "1080020"
-        And Input project for financial dimension "BAU"
+        And Input cost center for financial dimension "1123022"
+        And Input project for financial dimension "BAU_BLDG"
         And Input security type for financial dimension "Z000001"
         And Input product for financial dimension "900001"
         And Input system IT for financial dimension "UNASSIGN"
-        And Input affiliate for financial dimension "TSD"
-
+#        And Input affiliate for financial dimension "TSD"
         And Click save
         And Click change vendor
         And Input vendor name "Z999999999"
+
+        And Click add line
+#        And Input reqester "Phornpan Nooma"
+#        And Input buying legal entity "ASET"
+        And Input item number "72151500-0000000003"
+        And Input quantity "550"
+        And Input unit price "1"
+        And Click financial dimension
+        And Input cost center for financial dimension "1123022"
+        And Input project for financial dimension "BAU_BLDG"
+        And Input security type for financial dimension "Z000001"
+        And Input product for financial dimension "900001"
+        And Input system IT for financial dimension "UNASSIGN"
+#        And Input affiliate for financial dimension "SET"
+        And Click save
+        And Click change vendor
+        And Input vendor name "Z999999999"
+#        And Verify vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์์"
 
         And Submit PR and sending to approval process
         And Click close window to verrify created PR
