@@ -32,15 +32,15 @@ Test create new purchase order
 #       AND Click edit to edit PO
         AND Input pr type of po "จัดหาผ่านหน่วยงานจัดหา"
 #    43231500-0000000002
-        AND Input item for po "43231500-0000000002"
+        AND Input item for po "70111703-0000000001"
         AND Input unit price for po "1200"
         AND Input received condition "Not involved in inspection committee (ไม่เข้าคณะทำงานตรวจรับ)"
         AND Click financial dimension of po
-        AND Input cost center for po "1080020"
-        AND Input project for po "BAU_FIN"
+        AND Input cost center for po "1123020"
+        AND Input project for po "BAU_BLDG"
         AND Click save for PO
-        AND Click workflow for po
-        AND Click submit PO
+#        AND Click workflow for po
+#        AND Click submit PO
 
 
 
