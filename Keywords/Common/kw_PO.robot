@@ -56,8 +56,11 @@ Click ok to create PO
 
 #//span[@class="button-label"][text()="Edit"]
 Click edit to edit PO
-    Wait Until Element Is Visible   //span[@class="button-label"][text()="Edit"]
-    Click_by_javascript             //span[@class="button-label"][text()="Edit"]
+    ${status}                       Run Keyword And Return Status               Wait Until Element Is Visible           //span[@class="button-label"][text()="Edit"]
+    Run Keyword If  '${status}' == 'Pass'
+    ...     Click_by_javascript             //span[@class="button-label"][text()="Edit"]
+    ...     ELSE
+    ...     Log     Edit button is not displayed     WARN
 
 Input pr type of po "${pr_type}"
     wait until keyword succeeds     4x    5s        input text      css:input[id*="purchtablelistpage_"][id*="PurchTable_IVZS_BusinessJustification_Description_input"]         ${pr_type}
