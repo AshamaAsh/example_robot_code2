@@ -62,7 +62,9 @@ Test creating credit note
         And Click ok for posting invoice
         And Warning message "Warning: You are posting the invoice and printing to screen only. Do you want to continue?" popup
         And Click 'Yes' for wanting to continue
-    Then Verify generate invoice credit note
+        And Click close printing invoice page
+    Then Sale status should be "Invoiced"
+#    Then Verify generate invoice credit note
 
 
 

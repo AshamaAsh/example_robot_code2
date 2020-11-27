@@ -12,34 +12,10 @@ Test Setup         Run Keywords
 #Suite Teardown      Close All Browsers
 
 *** Test Cases ***
-Create New PR 1 line not by amount
+Test Create New PR 1 line not by amount
     [Tags]      create
-#    When Click new for new PR
-#        And Input PR subject "test fixed asset5"
-#        And Input PR type "จัดหาผ่านหน่วยงานจัดหา"
-#        And Start date "12/11/2020" and end date "12/11/2020"
-#        And Click by amount
-#        And Click OK to create PR
-#
-#        And Click add line
-##        And Input reqester "Chollada Amatyakul"
-#        And Input buying legal entity "ADAP"
-#        And Input item number "72151500-0000000003"
-#        And Input quantity "450"
-#        And Input unit price "1"
-#        And Click financial dimension
-#        And Input cost center for financial dimension "1123022"
-#        And Input project for financial dimension "BAU_BLDG"
-#        And Input security type for financial dimension "Z000001"
-#        And Input product for financial dimension "900001"
-#        And Input system IT for financial dimension "UNASSIGN"
-#
-#        And Click save
-#        And Click change vendor
-#        And Input vendor name "0000000009"
-#        And Verify vendor name "ห้างหุ้นส่วนจำกัด เอ็ม แอนด์ เอ็ม เลเซอร์พริ้นต์"
     When Click new for new PR
-        And Input PR subject "test ดำเนินการเอง 2"
+        And Input PR subject "test 2 ค่าป้ายสติกเกอร์ติดหน้าอก"
         And Input PR type "ดำเนินการเอง"
         And Start date "17/11/2020" and end date "17/11/2020"
         And Click OK to create PR
@@ -47,16 +23,17 @@ Create New PR 1 line not by amount
         And Click add line
 #        And Input reqester "Chollada Amatyakul"
         And Input buying legal entity "ASET"
-        And Input item number "84121600-0000000007"
+#        84121600-000000000
+        And Input item number "84121600-0000000004"
         And Input quantity "1"
-        And Input unit price "2500"
-        And Click financial dimension
-        And Input cost center for financial dimension "1900000"
-        And Input project for financial dimension "BAU_FIN"
-        And Input security type for financial dimension "Z000001"
-        And Input product for financial dimension "500100"
-        And Input system IT for financial dimension "UNASSIGN"
-        And Input affiliate for financial dimension "SET"
+        And Input unit price "900"
+#        And Click financial dimension
+#        And Input cost center for financial dimension "1900000"
+#        And Input project for financial dimension "BAU_FIN"
+#        And Input security type for financial dimension "Z000001"
+#        And Input product for financial dimension "500100"
+#        And Input system IT for financial dimension "UNASSIGN"
+#        And Input affiliate for financial dimension "SET"
 
         And Click save
         And Click change vendor
@@ -67,7 +44,7 @@ Create New PR 1 line not by amount
         And Click refresh button
     Then Verify created PR
 
-Create New PR more than 1 line not by amount
+Test Create New PR more than 1 line not by amount
     [Tags]      run_test
     When Click new for new PR
         And Input PR subject "Test ดำเนินการเอง 4 lines"
@@ -150,7 +127,7 @@ Create New PR more than 1 line not by amount
         And Click close window to verrify created PR
     Then Verify created PR
 
-Create New PR more than 1 line by amount
+Test Create New PR by amount
     [Tags]
     When Click new for new PR
         And Input PR subject "test robot by amount"
@@ -169,7 +146,7 @@ Create New PR more than 1 line by amount
         And Click refresh button
     Then Verify created PR
 
-Recall PR that already submitted
+Test Recall PR that already submitted
     [Tags]          recall
     When Click new for new PR
         And Input PR subject "test robot recall PR"
@@ -209,7 +186,7 @@ Approve after reviewing
         And Verify PR status "Approved"
 
 
-Test fix asset
+Test Create PR that item is fixed asset
     [Tags]      fa
     When Click new for new PR
         And Input PR subject "test fix asset 11"
@@ -219,7 +196,6 @@ Test fix asset
         And Click OK to create PR
 
         And Click add line
-#        And Input reqester "Chollada Amatyakul"
         And Input buying legal entity "ASET"
         And Input item number "72151500-0000000003"
         And Input quantity "650"
@@ -261,7 +237,7 @@ Test fix asset
 
 
 #70111703-0000000001
-Test fix asset
+Test Create PR that item is prepaided fixed asset
     [Tags]      fa_prepaid
     When Click new for new PR
         And Input PR subject "test fix asset prepaid 1"

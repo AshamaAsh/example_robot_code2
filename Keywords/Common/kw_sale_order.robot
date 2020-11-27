@@ -54,7 +54,7 @@ Change company to "${company}"
     Click Element                           //input[@name="DataArea_id"]
     Clear Element Text                      //input[@name="DataArea_id"]
     Input Text                              //input[@name="DataArea_id"]               ${company}
-    Press key                              //input[@name="DataArea_id"]                \\13
+    Press keys                              //input[@name="DataArea_id"]               RETURN
     wait until keyword succeeds     4x  5s      click element       css:span[id*="Close_label"]
     sleep   2s
     
@@ -68,7 +68,7 @@ Screen will show Create sales order popup
 #0000000179
 Input customer account "${customer_acc}"
     wait until keyword succeeds     4x  5s      Input Text          css:input[id*="CustAccount_input"]         ${customer_acc}
-    wait until keyword succeeds     4x  5s      Press key           css:input[id*="CustAccount_input"]         \\13
+    wait until keyword succeeds     4x  5s      Press keys           css:input[id*="CustAccount_input"]         RETURN
 
 Click ok to create sales order
     wait until keyword succeeds     4x  5s      click element   css:span[id*="_OK_label"]
@@ -126,7 +126,7 @@ Get so number from file
 
 ###################
 Click Invoice Tab
-    sleep   1s
+    sleep   2s
     wait until keyword succeeds     4x  5s      click element   css:button[id*="SalesTable_"][id*="_Invoice_button"]
 
 Click generate invoice
@@ -201,7 +201,7 @@ Click credit note
 
 Input reason code "${reason_code}"
     wait until keyword succeeds     4x  5s      input text          css:input[name*="editReasonCode"]           ${reason_code}
-    press key                       css:input[name*="editReasonCode"]       \\13
+    press keys                       css:input[name*="editReasonCode"]       RETURN
 
 Click note format
     wait until keyword succeeds     4x  5s      click element       css:input[aria-controls*="SalesCopying"][aria-controls*="_NoteFormat_TH_list"]
@@ -228,7 +228,7 @@ Input sales order "${so_number}"
     wait until keyword succeeds     4x  5s      click element                css:div[id*="SalesCopying_"][id*="_CustInvoiceJour_SalesNum_1"]
     wait until keyword succeeds     4x  5s      click element                css:div[id*="SalesCopying_"][id*="_CustInvoiceJour_SalesNum_1"]
     wait until keyword succeeds     4x  5s      input text                   css:input[id*="__FilterField_CustInvoiceJour_SalesNum_SalesId_Input_"]      ${so_number}
-    press key       css:input[id*="__FilterField_CustInvoiceJour_SalesNum_SalesId_Input_"]          \\13
+    press keys       css:input[id*="__FilterField_CustInvoiceJour_SalesNum_SalesId_Input_"]          RETURN
 
 Click wanted invoice
     wait until keyword succeeds     4x  5s      click element       css:span[id*="SalesCopying_"][id*="_InvoiceMarkAll_check"]
@@ -300,7 +300,10 @@ Verify generate invoice credit note
     Page Should Contain Element         //label[@class="label radioButton-label staticText"][text()="Header"]
 
 Click close invoice
-#    wait until keyword succeeds     4x  5s      click element     css:span[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton_label"]
-#    wait until keyword succeeds     4x  5s      click element     css:span[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton_label"]
-    wait until keyword succeeds     4x  5s      click element     css:button[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton"]
-    wait until keyword succeeds     4x  5s      click element     css:button[id*="CustInvoiceJournal_"][id*="_SystemDefinedCloseButton"]
+    Wait Until Page Contains Element            css:iframe[src*="Credit note"]
+    sleep   3s
+    Wait Until Page Contains Element            css:button[id*="SrsReportPdfViewerForm_"][id*="SystemDefinedCloseButton"]
+    Click Element                               css:button[id*="SrsReportPdfViewerForm_"][id*="SystemDefinedCloseButton"]
+
+
+#iframe[src*="Credit note"]
