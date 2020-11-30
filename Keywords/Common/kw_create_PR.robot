@@ -29,8 +29,19 @@ Input PR type "${prtype}"
     wait until keyword succeeds     4x  5s      input text      css:input[id*="PurchReqCreate_"][id*="_Description_input"]      ${prtype}
 
 Start date "${start_date}" and end date "${end_date}"
-    wait until keyword succeeds     4x  5s      input text      css:input[id*="PurchReqCreate_"][id*="_FromDate_input"]       ${start_date}
-    wait until keyword succeeds     4x  5s      input text      css:input[id*="PurchReqCreate_"][id*="_ToDate_input"]         ${end_date}
+    Wait Until Element Is Visible       css:input[id*="PurchReqCreate_"][id*="_FromDate_input"]
+    Click Element                       css:input[id*="PurchReqCreate_"][id*="_FromDate_input"]
+    Clear Element Text                  css:input[id*="PurchReqCreate_"][id*="_FromDate_input"]
+    Input Text                          css:input[id*="PurchReqCreate_"][id*="_FromDate_input"]       ${start_date}
+
+    Wait Until Element Is Visible       css:input[id*="PurchReqCreate_"][id*="_ToDate_input"]
+    Click Element                       css:input[id*="PurchReqCreate_"][id*="_ToDate_input"]
+    Clear Element Text                  css:input[id*="PurchReqCreate_"][id*="_ToDate_input"]
+    Input Text                          css:input[id*="PurchReqCreate_"][id*="_ToDate_input"]         ${end_date}
+
+#Start date "${start_date}" and end date "${end_date}"
+#    wait until keyword succeeds     4x  5s      input text      css:input[id*="PurchReqCreate_"][id*="_FromDate_input"]       ${start_date}
+#    wait until keyword succeeds     4x  5s      input text      css:input[id*="PurchReqCreate_"][id*="_ToDate_input"]         ${end_date}
 
 Click by amount
     wait until keyword succeeds     4x  5s      click element   css:span[id*="PurchReqCreate"][id*="ProgressAmount_toggle"]
@@ -39,8 +50,12 @@ Click OK to create PR
     wait until keyword succeeds     4x  5s      click button        css:button[id*="PurchReqCreate_"][id*="OK"]
 
 Input budget year "${date}"
-    sleep   1s
-    input text      css:input[id*="PurchReqTable_"][id*="_PurchReqTable_TransDate_input"]       ${date}
+    Wait Until Element Is Visible               //input[@name="PurchReqTable_TransDate"]
+    Click Element                               //input[@name="PurchReqTable_TransDate"]
+    Clear Element Text                          //input[@name="PurchReqTable_TransDate"]
+    Input Text                                  //input[@name="PurchReqTable_TransDate"]                ${date}
+    Press Keys                                  //input[@name="PurchReqTable_TransDate"]                RETURN
+
 #### Add line
 Click add line
     wait until keyword succeeds     4x  5s      click element       css:button[id*="PurchReqTable_"][id*="_PurchReqNewLine"]
