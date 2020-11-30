@@ -15,7 +15,7 @@ Test Setup         Run Keywords
 Test Create New PR 1 line not by amount
     [Tags]      create
     When Click new for new PR
-        And Input PR subject "test ดำเนินการเอง Robot Scripts"
+        And Input PR subject "test ดำเนินการเอง (มากกว่า 5 หมื่น)"
         And Input PR type "ดำเนินการเอง"
         And Start date "01/01/2021" and end date "30/11/2021"
         sleep   3s
@@ -24,11 +24,11 @@ Test Create New PR 1 line not by amount
         Sleep   3s
         And Click add line
 #        And Input reqester "Chollada Amatyakul"
-        And Input buying legal entity "ASET"
-#        84121600-000000000
-        And Input item number "84121600-0000000004"
+        And Input buying legal entity "ADAP"
+#        84121600-0000000004
+        And Input item number "51000000-0000000001"
         And Input quantity "1"
-        And Input unit price "15000"
+        And Input unit price "55000"
         And Click financial dimension
         And Input cost center for financial dimension "1900000"
         And Input project for financial dimension "BAU_FIN"
