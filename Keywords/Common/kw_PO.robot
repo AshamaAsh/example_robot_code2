@@ -45,9 +45,13 @@ Input vendor account "${vend_acct}" [PO]
     wait until keyword succeeds             4x  5s              input text              css:input[id*="PurchCreateOrder_"][id*="_PurchTable_OrderAccount_input"]            ${vend_acct}
 
 Input start date for PO "${start_date}"
+    Wait Until Element Is Visible           css:input[id*="PurchCreateOrder_"][id*="_PurchTable_IVZS_FromDate_input"]
+    Click Element                           css:input[id*="PurchCreateOrder_"][id*="_PurchTable_IVZS_FromDate_input"]
     wait until keyword succeeds             4x  5s              input text              css:input[id*="PurchCreateOrder_"][id*="_PurchTable_IVZS_FromDate_input"]           ${start_date}
 
 Input end date for PO "${end_date}"
+    Wait Until Element Is Visible           css:input[id*="PurchCreateOrder_"][id*="_PurchTable_IVZS_ToDate_input"]
+    Click Element                           css:input[id*="PurchCreateOrder_"][id*="_PurchTable_IVZS_ToDate_input"]
     wait until keyword succeeds             4x  5s              input text              css:input[id*="PurchCreateOrder_"][id*="_PurchTable_IVZS_ToDate_input"]             ${end_date}
 
 Click ok to create PO
@@ -57,7 +61,7 @@ Click ok to create PO
 #//span[@class="button-label"][text()="Edit"]
 Click edit to edit PO
     ${status}                       Run Keyword And Return Status               Wait Until Element Is Visible           //span[@class="button-label"][text()="Edit"]
-    Run Keyword If  '${status}' == 'Pass'
+    Run Keyword If  '${status}' == 'True'
     ...     Click_by_javascript             //span[@class="button-label"][text()="Edit"]
     ...     ELSE
     ...     Log     Edit button is not displayed     WARN
