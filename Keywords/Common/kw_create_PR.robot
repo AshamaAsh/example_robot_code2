@@ -38,6 +38,9 @@ Click by amount
 Click OK to create PR
     wait until keyword succeeds     4x  5s      click button        css:button[id*="PurchReqCreate_"][id*="OK"]
 
+Input budget year "${date}"
+    sleep   1s
+    input text      css:input[id*="PurchReqTable_"][id*="_PurchReqTable_TransDate_input"]       ${date}
 #### Add line
 Click add line
     wait until keyword succeeds     4x  5s      click element       css:button[id*="PurchReqTable_"][id*="_PurchReqNewLine"]

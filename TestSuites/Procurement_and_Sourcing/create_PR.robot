@@ -15,34 +15,37 @@ Test Setup         Run Keywords
 Test Create New PR 1 line not by amount
     [Tags]      create
     When Click new for new PR
-        And Input PR subject "test 2 ค่าป้ายสติกเกอร์ติดหน้าอก"
+        And Input PR subject "test ดำเนินการเอง"
         And Input PR type "ดำเนินการเอง"
-        And Start date "17/11/2020" and end date "17/11/2020"
+        And Start date "1/1/2021" and end date "30/11/2021"
+        sleep   1s
         And Click OK to create PR
+
+        And Input budget year "1/1/2021"
 
         And Click add line
 #        And Input reqester "Chollada Amatyakul"
-        And Input buying legal entity "ASET"
+        And Input buying legal entity "ADAP"
 #        84121600-000000000
-        And Input item number "84121600-0000000004"
+        And Input item number "51000000-0000000001"
         And Input quantity "1"
-        And Input unit price "900"
-#        And Click financial dimension
-#        And Input cost center for financial dimension "1900000"
-#        And Input project for financial dimension "BAU_FIN"
+        And Input unit price "15000"
+        And Click financial dimension
+        And Input cost center for financial dimension "1900000"
+        And Input project for financial dimension "BAU_FIN"
 #        And Input security type for financial dimension "Z000001"
 #        And Input product for financial dimension "500100"
 #        And Input system IT for financial dimension "UNASSIGN"
 #        And Input affiliate for financial dimension "SET"
 
         And Click save
-        And Click change vendor
-        And Input vendor name "Z999999999"
+#        And Click change vendor
+#        And Input vendor name "0000011820"
 
-        And Submit PR and sending to approval process
-        And Click close window to verrify created PR
-        And Click refresh button
-    Then Verify created PR
+#        And Submit PR and sending to approval process
+#        And Click close window to verrify created PR
+#        And Click refresh button
+#    Then Verify created PR
 
 Test Create New PR more than 1 line not by amount
     [Tags]      run_test
