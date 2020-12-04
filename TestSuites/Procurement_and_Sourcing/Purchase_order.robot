@@ -38,6 +38,8 @@ Test create new purchase order
         AND Click financial dimension of po
         AND Input cost center for po "1123020"
         AND Input project for po "BAU_BLDG"
+        AND Input security type for PO "Z000001"
+        AND Input product for PO "900001"
         AND Click save for PO
 #        AND Click workflow for po
 #        AND Click submit PO
