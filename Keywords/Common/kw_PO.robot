@@ -93,6 +93,14 @@ Input project for po "${project}"
     wait until keyword succeeds     4x  5s          input text              css:input[id*="purchtablelistpage_"][id*="_DECValue_FD02_Project_input"]            ${project}
     Press keys                      css:input[id*="purchtablelistpage_"][id*="_DECValue_FD02_Project_input"]            RETURN
 
+Input security type for "${sec_type}"
+    wait until keyword succeeds     4x  5s          input text          css:input[id*="PurchTable_"][id*="_DimensionEntryControlLine_DECValue_FD03_SecurityType_input"]      ${sec_type}
+    Press keys                      css:input[id*="PurchTable_"][id*="_DimensionEntryControlLine_DECValue_FD03_SecurityType_input"]         RETURN
+
+Input product for "${product}"
+    wait until keyword succeeds     4x  5s          input text      css:input[id*="PurchTable_"][id*="_DimensionEntryControlLine_DECValue_FD04_Product_input"]     ${product}
+    Press keys                      css:input[id*="PurchTable_"][id*="_DimensionEntryControlLine_DECValue_FD04_Product_input"]              RETURN
+
 Click save for PO
     Click_by_javascript             //span[text()="Save"]
 
