@@ -1,3 +1,3 @@
 *** Variables ***
-${username}         itbhakjira
-${password}         Etf#2020
+${username}         samepleusername
+${password}         samplepassword

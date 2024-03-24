@@ -1,24 +1,24 @@
 web_login_am_role = {
-	"url": "",
-	"uri": "/etfs/login",
+	"url": "someurl",
+	"uri": "/somewebpage/login",
 	"method": "POST",
 	"param":"",
 	"headers":{"Authorization":"","Content-Type":"application/json"},
-	"body":{"username":"itbhakjira525","password":"Etf#2020","channel":"WEB"}
+	"body":{"username":"username","password":"password","channel":"WEB"}
 }
 
 web_login = {
 	"url": "",
-	"uri": "/etfs/login",
+	"uri": "/somewebpage/login",
 	"method": "POST",
 	"param":"",
 	"headers":{"Authorization":"","Content-Type":"application/json"},
-	"body":{"username":"pdrobot011ent","password":"Etf#2020","channel":"WEB"}
+	"body":{"username":"someusername","password":"somepassword","channel":"WEB"}
 }
 
 get_settlement_date_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/get-settlement-date",
+	"uri": "/somewebpage/somepath/get-settlement-date",
 	"method": "GET",
 	"params": {"txnDate":""},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
@@ -27,7 +27,7 @@ get_settlement_date_from_api = {
 
 get_parti_info_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/csd-participant-inquiry",
+	"uri": "/somewebpage/somepath/some-inquiry",
 	"method": "GET",
 	"params": {"activeFlag":"Y","partiID":"","matchFlag":"Y"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
@@ -36,85 +36,85 @@ get_parti_info_from_api = {
 
 get_etf_info_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/etf-profile-inquiry",
+	"uri": "/somewebpage/somepath/some-inquiry",
 	"method": "GET",
-	"params": {"activeFlag":"Y","securityAssetAbbr":"","isinCode":"","securityNameEng":"","functionCode":"CRRD001","matchFlag":"Y"},
+	"params": {"activeFlag":"Y","securityAssetAbbr":"","sth":"","securityNameEng":"","functionCode":"code","matchFlag":"Y"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_etf_account_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/csd-account-inquiry",
+	"uri": "/somewebpage/somepath/some-inquiry",
 	"method": "GET",
-	"params": {"sysPartiID":"12","accountNo":"0110031708","matchFlag":"Y","activeFlag":"Y"},
+	"params": {"sysPartiID":"12","accountNo":"somenumber","matchFlag":"Y","activeFlag":"Y"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_ul_account_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/csd-account-inquiry",
+	"uri": "/somewebpage/wemon/some-inquiry",
 	"method": "GET",
-	"params": {"sysPartiID":"12","accountNo":"0110000027","matchFlag":"Y","activeFlag":"Y"},
+	"params": {"sysPartiID":"12","accountNo":"somenumber","matchFlag":"Y","activeFlag":"Y"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_avail_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/get-available-issuing-limit",
+	"uri": "/somewebpage/web/g-limit",
 	"method": "GET",
-	"params": {"etfSecurityAssetID":"","sysPartiID":"12"},
+	"params": {"somewebpageecurityAssetID":"","sysPartiID":"some"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_pdf_data_from_api = {
 	"url": "",
-	"uri": "/etfs/web/creation/creation-get-pdf-data",
+	"uri": "/somewebpage/web/createt-pdf-data",
 	"method": "GET",
-	"params": {"txnDate":"","etfSecurityAssetID":"6994","basketType":"IK","txnTypeId":"CR","underlyingSettleStatus":"NF"},
+	"params": {"txnDate":"","somewebpageecurityAssetID":"sth","basketType":"sth","txnTypeId":"sth","underlyingSettleStatus":"sth"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 cu = 2
 
-get_ul_aot_from_api = {
+get_ul_sth_from_api = {
 	"url": "",
-	"uri": "/etfs/web/creation-redemption/pdf-underlying-security-inquiry",
+	"uri": "/somewebpage/web/creation-reying-sth-inquiry",
 	"method": "GET",
-	"params": {"txnDate":"","basketType":"IK","etfSecurityAssetID":"6994","activeFlag":"Y","securityAssetAbbr":"AOT",
-			   "isinCode":"","securityNameEng":"","functionCode":"CRRD001","matchFlag":"Y"},
+	"params": {"txnDate":"","basketType":"IK","somewebpageecurityAssetID":"sth","activeFlag":"Y","securityAssetAbbr":"sth",
+			   "isinCode":"","securityNameEng":"","functionCode":"sth","matchFlag":"Y"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_holder_account_002_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/csd-get-holder-account",
+	"uri": "/somewebpage/somepath/sth",
 	"method": "GET",
-	"params": {"sysPartiID":"3","brokerageAccountId":"10013711","referenceNo":"3102002587675","referenceType":"0","sysNationalityId":"1"},
+	"params": {"sysPartiID":"3","brokerageAccountId":"sth","referenceNo":"sth","referenceType":"0","sysNationalityId":"1"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_unit_holder_account_from_api = {
 	"url": "",
-	"uri": "/etfs/web/common/get-unit-holder-name-by-ref",
+	"uri": "/somewebpage/somepath/get-by-ref",
 	"method": "GET",
-	"params": {"amSysPartiID":"43","unitHolderId":"23344555","referenceTypeId":"0","referenceNo":"3400900688034","sysNationalityId":"1"},
+	"params": {"amSysPartiID":"43","unitHolderId":"sth","referenceTypeId":"0","referenceNo":"sth","sysNationalityId":"1"},
 	"headers":{"Authorization":"","Content-Type":"application/json"},
 	"body":""
 }
 
 get_cash_amount = {
 	"url": "",
-	"uri": "/etfs/web/creation/create-check-pdf-data",
+	"uri": "/somewebpage/web/creatio-data",
 	"method": "POST",
 	"param": "",
 	"headers":{"Authorization":"","Content-Type":"application/json"},
-	"body":{"txnDate":"", "etfSecurityAssetID": "", "basketType": "IK"}
+	"body":{"txnDate":"", "somewebpageecurityAssetID": "", "basketType": "IK"}
 }
 

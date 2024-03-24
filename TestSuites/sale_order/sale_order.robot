@@ -9,16 +9,16 @@ Suite Setup         Run Keywords
 ...                 Login with valid credential should be success
 ...                 Go to sale order page from left menu
 ...                 Screen should be show Sales Orders page correct
-...                 Change company to "ASET"
+...                 Change company to "somecompany"
 #Suite Teardown      Close browser
 
 *** Test Cases ***
 Test to create sale order and verify created success
     [Tags]         create_so
-#    Click sales order number "SO200001131"
+#    Click sales order number " "
     When Click New button
-        And Input customer account "0000000179"
-        And Input item number "205003_U000"
+        And Input customer account "something"
+        And Input item number "somenumber"
         And Input sales quantity "1"
         And Input sales unit price "2000"
         And Click save sales order
@@ -35,20 +35,20 @@ Test to create sale order and verify created success
 
 Test creating credit note
     [Tags]          credit_note
-#    Click sales order number "SO200001120"
+#    Click sales order number " "
     Given Get so number from file
         And Get invoice number from file
     When Click New button
-        And Input customer account "0000000179"
+        And Input customer account "someaccount"
         And Click credit note
-        And Input reason code "CDNG01"
+        And Input reason code "cose"
         And Select "credit note (quantity)" in note format
         And Input sales order "${sales_order_id}"
         And Click wanted invoice
         And Click ok to create credit/debit note
 #        Click edit sales order
-        And Input number sequence group "SET_SO_IN_CN_DN"
-        And Input RV number "RN02000001"
+        And Input number sequence group "somenumber"
+        And Input RV number "somervnumber"
         And Click save sales order
 #
         And Click confirm sales order
